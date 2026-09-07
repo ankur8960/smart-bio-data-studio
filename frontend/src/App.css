@@ -669,3 +669,195 @@
     align-items: flex-start;
   }
 }
+/* =========================================
+   BUILDER STEP NAVIGATION
+========================================= */
+
+.step-navigation {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 30px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.step-pill {
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  border: 1px solid #ddd9d2;
+  background: white;
+  color: #777;
+
+  padding: 9px 13px;
+  border-radius: 9px;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition:
+    background 0.2s ease,
+    border-color 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.step-pill span {
+  width: 22px;
+  height: 22px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #f0ede8;
+
+  font-size: 10px;
+  font-weight: 700;
+}
+
+.step-pill.active {
+  border-color: #222;
+  background: #222;
+  color: white;
+}
+
+.step-pill.active span {
+  background: #444;
+  color: white;
+}
+
+.step-pill:hover:not(.disabled) {
+  transform: translateY(-1px);
+}
+
+.step-pill.disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}
+
+.step-line {
+  width: 25px;
+  height: 1px;
+  flex-shrink: 0;
+  background: #d9d5ce;
+}
+
+.progress-fill.progress-step-two {
+  width: 50%;
+}
+
+
+/* =========================================
+   FAMILY SECTION
+========================================= */
+
+.family-intro {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+
+  margin: 30px 0;
+
+  padding: 17px 18px;
+
+  background: #faf9f7;
+  border: 1px solid #ebe7e0;
+  border-radius: 12px;
+}
+
+.family-icon {
+  width: 42px;
+  height: 42px;
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+  background: #eeeae3;
+
+  font-size: 20px;
+  color: #777;
+}
+
+.family-intro h3 {
+  margin: 0 0 4px;
+
+  font-size: 14px;
+}
+
+.family-intro p {
+  margin: 0;
+
+  font-size: 12px;
+  line-height: 1.5;
+  color: #888;
+}
+
+.form-field textarea {
+  width: 100%;
+
+  resize: vertical;
+
+  padding: 13px 14px;
+
+  border: 1px solid #ddd9d2;
+  border-radius: 9px;
+
+  background: white;
+  color: #252525;
+
+  font-size: 14px;
+  line-height: 1.5;
+
+  outline: none;
+
+  transition:
+    border-color 0.2s ease,
+    box-shadow 0.2s ease;
+}
+
+.form-field textarea::placeholder {
+  color: #b2ada5;
+}
+
+.form-field textarea:focus {
+  border-color: #444;
+  box-shadow: 0 0 0 3px rgba(40, 40, 40, 0.07);
+}
+
+.family-preview {
+  margin-top: 5px;
+}
+
+
+/* =========================================
+   RESPONSIVE STEP NAVIGATION
+========================================= */
+
+@media (max-width: 700px) {
+  .step-navigation {
+    margin-bottom: 22px;
+  }
+
+  .step-pill {
+    padding: 8px 10px;
+  }
+
+  .step-line {
+    width: 12px;
+  }
+
+  .family-intro {
+    align-items: flex-start;
+  }
+}
