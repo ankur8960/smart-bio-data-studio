@@ -861,3 +861,55 @@
     align-items: flex-start;
   }
 }
+/* Education & Career form layout */
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-bottom: 18px;
+}
+
+.form-group label {
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 12px 14px;
+  border: 1px solid #ddd8d0;
+  border-radius: 10px;
+  background: #fff;
+  outline: none;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #b8a58a;
+}
+
+/* Education & Career subsection headings */
+
+.subsection-title {
+  margin-top: 28px;
+  margin-bottom: 18px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #e8e3dc;
+  font-size: 18px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.subsection-title:first-of-type {
+  margin-top: 8px;
+}
+.progress-fill.progress-step-three {
+  width: 75%;
+}
+
+.progress-fill.progress-step-four {
+  width: 100%;
+}

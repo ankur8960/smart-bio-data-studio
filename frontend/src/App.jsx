@@ -21,6 +21,17 @@ function App() {
     familyType: '',
     familyValues: '',
     nativePlace: '',
+    highestQualification: '',
+    degreeCourse: '',
+    collegeUniversity: '',
+    occupation: '',
+    jobTitle: '',
+    companyOrganization: '',
+    workLocation: '',
+    annualIncome: '',
+    aboutMe: '',
+    hobbiesInterests: '',
+    partnerPreferences: '',
   })
 
   const handleChange = (event) => {
@@ -43,6 +54,12 @@ function App() {
 
   const goToPersonalDetails = () => {
     setCurrentStep(1)
+  }
+  const goToFamilyFromEducation = () => {
+    setCurrentStep(2)
+  }
+  const goToAboutYou = () => {
+    setCurrentStep(4)
   }
 
   if (showForm) {
@@ -77,7 +94,7 @@ function App() {
                   anything later before creating your final biodata.
                 </p>
               </>
-            ) : (
+            ) : currentStep === 2 ? (
               <>
                 <h1>Tell us about your family.</h1>
 
@@ -86,24 +103,46 @@ function App() {
                   more complete and personal.
                 </p>
               </>
-            )}
+            ) : currentStep === 3 ? (
+              <>
+                <h1>Let's talk about your education & career.</h1>
 
+                <p>
+                  Add your education and professional details to make
+                  your biodata more complete and informative.
+                </p>
+              </>
+            ) : (
+              <>
+                <h1>Tell us a little more about you.</h1>
+
+                <p>
+                  Share your personality, interests, and what you're
+                  looking for in a partner.
+                </p>
+              </>
+            )}
           </div>
+
 
           <div className="progress-bar">
             <div
-              className={`progress-fill ${
-                currentStep === 2 ? 'progress-step-two' : ''
-              }`}
+              className={`progress-fill ${currentStep === 2
+                  ? 'progress-step-two'
+                  : currentStep === 3
+                    ? 'progress-step-three'
+                    : currentStep === 4
+                      ? 'progress-step-four'
+                      : ''
+                }`}
             ></div>
           </div>
 
           <div className="step-navigation">
 
             <button
-              className={`step-pill ${
-                currentStep === 1 ? 'active' : ''
-              }`}
+              className={`step-pill ${currentStep === 1 ? 'active' : ''
+                }`}
               onClick={goToPersonalDetails}
             >
               <span>01</span>
@@ -113,9 +152,8 @@ function App() {
             <div className="step-line"></div>
 
             <button
-              className={`step-pill ${
-                currentStep === 2 ? 'active' : ''
-              }`}
+              className={`step-pill ${currentStep === 2 ? 'active' : ''
+                }`}
               onClick={() => setCurrentStep(2)}
             >
               <span>02</span>
@@ -124,10 +162,14 @@ function App() {
 
             <div className="step-line"></div>
 
-            <div className="step-pill disabled">
+            <button
+              className={`step-pill ${currentStep === 3 ? 'active' : ''
+                }`}
+              onClick={() => setCurrentStep(3)}
+            >
               <span>03</span>
               Education
-            </div>
+            </button>
 
             <div className="step-line"></div>
 
@@ -331,7 +373,7 @@ function App() {
 
                   </div>
                 </>
-              ) : (
+              ) : currentStep === 2 ? (
                 <>
                   <div className="section-heading">
 
@@ -514,6 +556,250 @@ function App() {
                     <button
                       className="next-button"
                       onClick={() => setCurrentStep(3)}
+                    >
+                      Continue
+                      <span>→</span>
+                    </button>
+
+                  </div>
+                </>
+              ) : currentStep === 3 ? (
+                <>
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-number">03</p>
+                      <h2>Education & Career</h2>
+                    </div>
+
+                    <span>Optional</span>
+                  </div>
+
+                  <div className="subsection-title">
+                    Education
+                  </div>
+
+
+                  <div className="form-group">
+                    <label htmlFor="highestQualification">
+                      Highest Qualification
+                    </label>
+
+                    <input
+                      type="text"
+                      id="highestQualification"
+                      name="highestQualification"
+                      value={formData.highestQualification}
+                      onChange={handleChange}
+                      placeholder="e.g. B.Tech, MBA, M.Com"
+                    />
+
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="degreeCourse">
+                      Degree / Course
+                    </label>
+
+                    <input
+                      type="text"
+                      id="degreeCourse"
+                      name="degreeCourse"
+                      value={formData.degreeCourse}
+                      onChange={handleChange}
+                      placeholder="e.g. Computer Science, B.Com"
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label htmlFor="collegeUniversity">
+                      College / University
+                    </label>
+
+                    <input
+                      type="text"
+                      id="collegeUniversity"
+                      name="collegeUniversity"
+                      value={formData.collegeUniversity}
+                      onChange={handleChange}
+                      placeholder="e.g. Delhi University"
+                    />
+                  </div>
+
+                  <div className="subsection-title">
+                    Career
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="occupation">
+                      Occupation
+                    </label>
+
+                    <input
+                      type="text"
+                      id="occupation"
+                      name="occupation"
+                      value={formData.occupation}
+                      onChange={handleChange}
+                      placeholder="e.g. Software Engineer"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="jobTitle">
+                      Job Title / Designation
+                    </label>
+
+                    <input
+                      type="text"
+                      id="jobTitle"
+                      name="jobTitle"
+                      value={formData.jobTitle}
+                      onChange={handleChange}
+                      placeholder="e.g. Senior Software Engineer"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="companyOrganization">
+                      Company / Organization
+                    </label>
+
+                    <input
+                      type="text"
+                      id="companyOrganization"
+                      name="companyOrganization"
+                      value={formData.companyOrganization}
+                      onChange={handleChange}
+                      placeholder="e.g. TCS, Infosys, Self Employed"
+                    />
+                  </div>
+
+
+                  <div className="form-group">
+                    <label htmlFor="workLocation">
+                      Work Location
+                    </label>
+
+                    <input
+                      type="text"
+                      id="workLocation"
+                      name="workLocation"
+                      value={formData.workLocation}
+                      onChange={handleChange}
+                      placeholder="e.g. Noida, Uttar Pradesh"
+                    />
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="annualIncome">
+                      Annual Income
+                    </label>
+
+                    <input
+                      type="text"
+                      id="annualIncome"
+                      name="annualIncome"
+                      value={formData.annualIncome}
+                      onChange={handleChange}
+                      placeholder="e.g. ₹8 Lakh per annum"
+                    />
+                  </div>
+                  <div className="form-actions">
+                    <button
+                      className="back-button"
+                      onClick={goToFamilyFromEducation}
+                    >
+                      ← Family & Background
+                    </button>
+
+                    <button
+                      className="next-button"
+                      onClick={goToAboutYou}
+                    >
+                      Continue
+                      <span>→</span>
+                    </button>
+                  </div>
+
+                </>
+
+              ) : (
+                <>
+                  <div className="section-heading">
+                    <div>
+                      <p className="section-number">04</p>
+                      <h2>About You</h2>
+                    </div>
+
+                    <span>Optional</span>
+                  </div>
+
+                  <div className="subsection-title">
+                    About Me
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="aboutMe">
+                      Tell us a little about yourself
+                    </label>
+
+                    <textarea
+                      id="aboutMe"
+                      name="aboutMe"
+                      rows="6"
+                      value={formData.aboutMe}
+                      onChange={handleChange}
+                      placeholder="Tell us about your personality, interests, values, lifestyle, and what makes you unique..."
+                    ></textarea>
+                  </div>
+                  <div className="subsection-title">
+                    Hobbies & Interests
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="hobbiesInterests">
+                      What do you enjoy doing?
+                    </label>
+
+                    <input
+                      type="text"
+                      id="hobbiesInterests"
+                      name="hobbiesInterests"
+                      value={formData.hobbiesInterests}
+                      onChange={handleChange}
+                      placeholder="e.g. Traveling, music, reading, fitness"
+                    />
+                  </div>
+
+                  <div className="subsection-title">
+                    Partner Preferences
+                  </div>
+
+                  <div className="form-group">
+                    <label htmlFor="partnerPreferences">
+                      What are you looking for in a partner?
+                    </label>
+
+                    <textarea
+                      id="partnerPreferences"
+                      name="partnerPreferences"
+                      rows="5"
+                      value={formData.partnerPreferences}
+                      onChange={handleChange}
+                      placeholder="Share the qualities, values, or lifestyle you hope to find in a partner..."
+                    ></textarea>
+                  </div>
+
+                  <div className="form-actions">
+
+                    <button
+                      className="back-button"
+                      onClick={() => setCurrentStep(3)}
+                    >
+                      ← Education & Career
+                    </button>
+
+                    <button
+                      className="next-button"
                     >
                       Continue
                       <span>→</span>
